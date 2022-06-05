@@ -2,6 +2,28 @@
 SELECT *
 FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `;
 
+--Updating table/ column BOROUGH.  Borough code: Manhattan (1), Bronx (2), Brooklyn (3), Queens (4), and Staten Island (5).
+
+UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+SET BOROUGH = 'Manhattan'
+WHERE BOROUGH = "1";
+
+UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+SET BOROUGH = 'Bronx'
+WHERE BOROUGH = "2";
+
+UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+SET BOROUGH = 'Brooklyn'
+WHERE BOROUGH = "3";
+
+UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+SET BOROUGH = 'Queens'
+WHERE BOROUGH = "4";
+
+UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+SET BOROUGH = 'Staten Island'
+WHERE BOROUGH = "5";
+
 --Checking to see if there are any Null values. 
 SELECT *
 FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
@@ -11,7 +33,6 @@ WHERE BOROUGH IS NULL
 	OR YEAR_BUILT IS NULL
 	OR YEAR_SOLD IS NULL;
 
--- Boough code: Manhattan (1), Bronx (2), Brooklyn (3), Queens (4), and Staten Island (5).
 -- Making a subquery to see which borough most sales by percentage. 
 SELECT BOROUGH
 	,COUNT(*) * 100 / (
