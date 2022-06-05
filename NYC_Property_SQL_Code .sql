@@ -28,6 +28,21 @@ FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
 GROUP BY NEIGHBORHOOD
 ORDER BY Neighborhood_Sales DESC LIMIT 20;
 
+--Which Sells More RESIDENTIAL_UNITS or COMMERCIAL_UNITS
+SELECT SUM(RESIDENTIAL_UNITS) AS Total_RESIDENTIAL_UNITS
+	,SUM(SALE_PRICE) AS Total_Sale_Price
+	,YEAR_SOLD
+FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+WHERE RESIDENTIAL_UNITS > 0
+GROUP BY YEAR_SOLD;
+
+SELECT SUM(COMMERCIAL_UNITS) AS Total_COMMERCIAL_UNITS
+	,SUM(SALE_PRICE) AS Total_Sale_Price
+	,YEAR_SOLD
+FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
+WHERE COMMERCIAL_UNITS > 0
+GROUP BY YEAR_SOLD;
+
 -- Find out how old the buildings are, when they were sold. Change yeat_built to date in excel  
 SELECT BOROUGH
 	,YEAR_SOLD
