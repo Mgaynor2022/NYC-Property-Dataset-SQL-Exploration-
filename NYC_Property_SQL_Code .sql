@@ -1,8 +1,16 @@
--- Checking to view the data I am working with. 
+--Uploaded the csv. file and found Borough column datatype needs to be changeed from interger to string. 
+CREATE
+	OR REPLACE TABLE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `AS
+
 SELECT *
+
+EXCEPT
+
+(BOROUGH)
+	,CAST(BOROUGH AS STRING) AS BOROUGH
 FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `;
 
---Updating table/ column BOROUGH.  Borough code: Manhattan (1), Bronx (2), Brooklyn (3), Queens (4), and Staten Island (5).
+--Updating BOROUGH column.  Borough code: Manhattan (1), Bronx (2), Brooklyn (3), Queens (4), and Staten Island (5).
 
 UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
 SET BOROUGH = 'Manhattan'
@@ -23,6 +31,10 @@ WHERE BOROUGH = "4";
 UPDATE `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `
 SET BOROUGH = 'Staten Island'
 WHERE BOROUGH = "5";
+
+-- Checking to view the data I am working with. 
+SELECT *
+FROM `dirty - TO - clean - 344721. nyc_data.nyc_property_sales `;
 
 --Checking to see if there are any Null values. 
 SELECT *
